@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
        loadScript("js/brython_stdlib.min.js").then(function(){
                // инициализация интерпритптора Python
                brython( {   debug: 0,
-                            pythonpath:['PythonScript','component'] /* путь к папке или корневой URL расположение скриптов */
+                            pythonpath:['WebPythonScript','component'] /* путь к папке или корневой URL расположение скриптов */
                         });
        },function(error){ console.log(error); })
    },function(error){ console.log(error); })
