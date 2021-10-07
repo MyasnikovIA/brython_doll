@@ -1,0 +1,14 @@
+{
+  "count": 1,
+  "entries": [
+    {
+      "API": "KKBOX",
+      "Description": "Get music libraries, playlists, charts, and perform out of KKBOX's platform",
+      "Auth": "OAuth",
+      "HTTPS": true,
+      "Cors": "unknown",
+      "Link": "https://developer.kkbox.com",
+      "Category": "Music"
+    }
+  ]
+}
