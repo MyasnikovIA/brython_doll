@@ -1,71 +1,62 @@
 <!doctype html>
 <html>
-<head>
-<meta name="description" content="Analog clock demo written in Brython www.brython.info">
-<meta name="keywords" content="Python,Brython">
-<meta name="author" content="Pierre Quentel">
-<meta charset="iso-8859-1">
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script type="text/javascript" src="js/brython.js"></script>
-<script type="text/javascript" src="js/brython_stdlib.js"></script>
-<script type="text/javascript" src="js/brython_run.js"></script>
-</head>
-<body>
-<canvas width="500" height="500" id="clock"></canvas>
-<script type="text/python">
+    <head>
+        <meta name="description" content="Analog clock demo written in Brython www.brython.info">
+        <meta name="keywords" content="Python,Brython">
+        <meta name="author" content="Pierre Quentel">
+        <meta charset="iso-8859-1">
+        <script type="text/javascript" src="js/brython_run.js"></script>
+    </head>
+    <body>
+        <canvas width="500" height="500" id="clock"></canvas>
+        <script type="text/python">
+            # ========================================================================================================
+            from browser import ajax
+            def on_complete(req):
+                print(req.text)
+            ajax.get("json/test.json", blocking=True, oncomplete=on_complete)
+            # ========================================================================================================
 
-# ========================================================================================================
-from browser import ajax
-def on_complete(req):
-    print(req.text)
-ajax.get("json/test.json", blocking=True, oncomplete=on_complete)
-# ========================================================================================================
+            """
+            # ???? ???????? ?????? (?? ???????? ? FireFox)
+            def on_complete(req):
+                if req.status==200 or req.status==0:
+                    print(req.text)
+                    #doc["main"].html = req.text
+                else:
+                    print("error "+req.text)
+                    #doc["main"].html = "error "+req.text
 
-"""
-# ???? ???????? ?????? (?? ???????? ? FireFox)
-def on_complete(req):
-    if req.status==200 or req.status==0:
-        print(req.text)
-        #doc["main"].html = req.text
-    else:
-        print("error "+req.text)
-        #doc["main"].html = "error "+req.text
+            def get(url):
+                req = ajax.ajax()
+                req.bind('complete',on_complete)
+                req.open('GET',url,True)
+                req.set_header('content-type','application/x-www-form-urlencoded')
+                req.send()
+            get('https://api.publicapis.org/random')
+            """
 
-def get(url):
-    req = ajax.ajax()
-    req.bind('complete',on_complete)
-    req.open('GET',url,True)
-    req.set_header('content-type','application/x-www-form-urlencoded')
-    req.send()
-get('https://api.publicapis.org/random')
-"""
+            # ========================================================================================================
+            #
+            import urllib.request
+            response = urllib.request.urlopen('https://api.publicapis.org/random')
+            print(response.read())
+            #print(ajax.get("https://api.publicapis.org/random",blocking=True))
+        </script>
+        <br/>https://brython.info/static_doc/en/faq.html
+        <br/>https://brython.info/static_doc/en/brython-packages.html
+        <br/>https://brython.info/static_doc/en/stdlib.html
+        <br/>https://brython.info/static_doc/en/worker.html
+        <br/>https://realpython.com/brython-python-in-browser
+        <br/>https://brython.info/static_doc/en/javascript.html
+        <br/> __BRYTHON__.python_to_js("import browser; browser.console.log('Hello Brython!')")
 
-# ========================================================================================================
-#
-import urllib.request
-response = urllib.request.urlopen('https://api.publicapis.org/random')
-print(response.read())
+        <script type="text/python" >
+            import show_source
+            import clock1
+            import uuid
+            print(uuid.uuid4());
+        </script>
 
-
-#print(ajax.get("https://api.publicapis.org/random",blocking=True))
-
-
-</script>
-<br/>https://brython.info/static_doc/en/faq.html
-<br/>https://brython.info/static_doc/en/brython-packages.html
-<br/>https://brython.info/static_doc/en/stdlib.html
-<br/>https://brython.info/static_doc/en/worker.html
-<br/>https://realpython.com/brython-python-in-browser
-<br/>https://brython.info/static_doc/en/javascript.html
-<br/> __BRYTHON__.python_to_js("import browser; browser.console.log('Hello Brython!')")
-
-<script type="text/python" >
-import show_source
-import clock1
-import uuid
-
-print(uuid.uuid4());
-</script>
-
-</body>
+    </body>
 </html>
