@@ -19,9 +19,10 @@ from browser import ajax
 def on_complete(req):
     print(req.text)
 ajax.get("json/test.json", blocking=True, oncomplete=on_complete)
-
 # ========================================================================================================
 
+"""
+# ???? ???????? ?????? (?? ???????? ? FireFox)
 def on_complete(req):
     if req.status==200 or req.status==0:
         print(req.text)
@@ -37,7 +38,7 @@ def get(url):
     req.set_header('content-type','application/x-www-form-urlencoded')
     req.send()
 get('https://api.publicapis.org/random')
-
+"""
 
 # ========================================================================================================
 #
@@ -47,6 +48,8 @@ print(response.read())
 
 
 #print(ajax.get("https://api.publicapis.org/random",blocking=True))
+
+
 </script>
 <br/>https://brython.info/static_doc/en/faq.html
 <br/>https://brython.info/static_doc/en/brython-packages.html
